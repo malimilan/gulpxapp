@@ -9,10 +9,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "cryptiles": "^4.1.2",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-imagemin": "^5.0.3",
     "gulp-sourcemaps": "^2.6.4",
-    "gulp-tinypng": "^1.0.2"
+    "gulp-tinypng": "^1.0.2",
+    "minimatch": "^3.0.3"
   }
 }
