@@ -1,6 +1,8 @@
 const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
 const tinypng = require('gulp-tinypng');
+const sourcemaps = require('gulp-sourcemaps');
+const concat = require('gulp-concat');
 
 /*
 -- TOP LEVEL FUNCTIONS
@@ -34,6 +36,15 @@ gulp.task('tinypng', function(){
     .pipe(tinypng('sgvFppdx77Q4PHZFMptPNsKjrF2ywQpK'))
     .pipe(gulp.dest('dist/images'));
     
+});
+
+//JS contcatination and minification
+gulp.task('js', function(){
+    gulp.src('src/js/*.js')
+    .pipe(sourcemaps.init())
+    .pipe(concat('app.min.js'))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('dist/js'))
 });
 
 // Default task for gulp - Runs by typing gulp in cmd
