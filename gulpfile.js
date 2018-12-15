@@ -3,6 +3,9 @@ const imagemin = require('gulp-imagemin');
 const tinypng = require('gulp-tinypng');
 const sourcemaps = require('gulp-sourcemaps');
 const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
+const pump = require('gulp-pump'); //used by uglify
+const minify = require('gulp-minify');
 
 /*
 -- TOP LEVEL FUNCTIONS
@@ -39,12 +42,18 @@ gulp.task('tinypng', function(){
 });
 
 //JS contcatination and minification
+// gulp.task('js', function(){
+//     gulp.src('src/js/*.js')
+//     .pipe(sourcemaps.init())
+//     .pipe(concat('app.min.js'))
+//     .pipe(sourcemaps.write())
+//     .pipe(gulp.dest('dist/js'))
+// });
 gulp.task('js', function(){
-    gulp.src('src/js/*.js')
-    .pipe(sourcemaps.init())
-    .pipe(concat('app.min.js'))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest('dist/js'))
+        gulp.src('src/js/*.js')
+        .pipe(concat('app.js'))
+        .pipe(minify())
+        .pipe(gulp.dest('dist/js'));
 });
 
 // Default task for gulp - Runs by typing gulp in cmd
